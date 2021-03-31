@@ -60,16 +60,8 @@ var App = React.createClass({
 	removeFromFavorites(address){
 
 		var favorites = this.state.favorites;
-		var index = -1;
+    const indexOfFavoriteMatchingAddress = favorites.find(favorite => favorite.address === address);
 
-		for(var i = 0; i < favorites.length; i++){
-
-			if(favorites[i].address == address){
-				index = i;
-				break;
-			}
-
-		}
 
 		// If it was found, remove it from the favorites array
 
@@ -87,18 +79,8 @@ var App = React.createClass({
 	},
 
 	isAddressInFavorites(address){
-
 		var favorites = this.state.favorites;
-
-		for(var i = 0; i < favorites.length; i++){
-
-			if(favorites[i].address == address){
-				return true;
-			}
-
-		}
-
-		return false;
+    return favorites.some(favorite => favorite.address === address);
 	},
 
 	searchForAddress(address){
